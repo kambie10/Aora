@@ -1,11 +1,12 @@
-import { View, Text, ScrollView, Image } from 'react-native'
 import { useState} from 'react'
+import { Link } from 'expo-router'
+import { View, Text, ScrollView, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { images } from '../../constants'
 import FormField from '../../components/FormField'
 import CutomeButton from '../../components/CutomeButton'
-import { Link } from 'expo-router'
+import { createUser } from '../../lib/appwrite'
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -16,6 +17,7 @@ const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = () => {
+    createUser()
     setIsSubmitting(true)
     setTimeout(() => {
       setIsSubmitting(false)
