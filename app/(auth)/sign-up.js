@@ -1,6 +1,6 @@
 import { useState} from 'react'
-import { Link } from 'expo-router'
-import { View, Text, ScrollView, Image } from 'react-native'
+import { Link, router } from 'expo-router'
+import { View, Text, ScrollView, Image, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { images } from '../../constants'
@@ -16,12 +16,23 @@ const SignUp = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = () => {
-    createUser()
+  const handleSubmit = async() => {
+    if (!form.email || !form.password || !form.username) {
+      Alert.alert('Error', 'Please fill all the fields')
+    }
     setIsSubmitting(true)
-    setTimeout(() => {
+    try {
+      const result = await createUser(form.email, form.password, form.username)
+      setUser(result)
+      setIsLoggedIn(true)
+
+      Alert.alert('Success', 'You are now logged in')
+      router.replace('/home')
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    } finally {
       setIsSubmitting(false)
-    }, 2000)
+    }
   }
 
   return (
