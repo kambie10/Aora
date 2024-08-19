@@ -5,7 +5,7 @@ import { GlobalProvider } from '../context/GlobalProvider'
 
 SplashScreen.preventAutoHideAsync()
 
- const RootLayout = () => {
+const RootLayout = () => {
   const [fontsLoaded, error] = useFonts({
     'Poppins-Black': require('../assets/fonts/Poppins-Black.ttf'),
     'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
@@ -28,13 +28,22 @@ SplashScreen.preventAutoHideAsync()
   return (
     <GlobalProvider>
       <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="index"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(auth)"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(tabs)"
+          options={{ headerShown: false }}
+        />
         {/* <Stack.Screen name="/search/[query]" options={{ headerShown: false }} /> */}
       </Stack>
     </GlobalProvider>
   )
- }
- 
- export default RootLayout
+}
+
+export default RootLayout

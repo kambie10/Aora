@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
-import { useState} from 'react'
+import { useState } from 'react'
 import { icons } from '../constants'
 
 const FormField = ({ title, value, placeholder, onChangeText, otherStyle, ...props }) => {
@@ -20,7 +20,10 @@ const FormField = ({ title, value, placeholder, onChangeText, otherStyle, ...pro
         />
         {title === 'Password' && (
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-            <Image source={!showPassword ? icons.eye : icons.eyeHide} className="w-6 h-6" />
+            <Image
+              source={!showPassword ? icons.eye : icons.eyeHide}
+              className="w-6 h-6"
+            />
           </TouchableOpacity>
         )}
       </View>

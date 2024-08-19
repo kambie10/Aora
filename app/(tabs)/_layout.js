@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native'
-import { Tabs, Redirect } from 'expo-router'
+import { Tabs } from 'expo-router'
 
 import { icons } from '../../constants'
 
@@ -12,7 +12,10 @@ const TabIcon = ({ color, focused, icon, name }) => {
         tintColor={color}
         className="w-6 h-6"
       />
-      <Text className={`${focused ? 'font-psemibold' : 'font-pregular'} text-xs`} style={{ color }}>
+      <Text
+        className={`${focused ? 'font-psemibold' : 'font-pregular'} text-xs`}
+        style={{ color }}
+      >
         {name}
       </Text>
     </View>
@@ -47,7 +50,7 @@ const TabsLayout = () => {
                 name="Home"
                 icon={icons.home}
               />
-            )
+            ),
           }}
         />
         <Tabs.Screen
@@ -62,7 +65,7 @@ const TabsLayout = () => {
                 name="Bookmark"
                 icon={icons.bookmark}
               />
-            )
+            ),
           }}
         />
         <Tabs.Screen
@@ -77,7 +80,7 @@ const TabsLayout = () => {
                 name="Create"
                 icon={icons.plus}
               />
-            )
+            ),
           }}
         />
         <Tabs.Screen
@@ -92,7 +95,7 @@ const TabsLayout = () => {
                 name="Profile"
                 icon={icons.profile}
               />
-            )
+            ),
           }}
         />
       </Tabs>

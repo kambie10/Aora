@@ -1,15 +1,17 @@
-import { Link, Redirect, router } from 'expo-router';
-import { Image, ScrollView, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Redirect, router } from 'expo-router'
+import { Image, ScrollView, Text, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { StatusBar } from 'expo-status-bar'
 
-import { images } from '../constants';
-import CutomeButton from '../components/CutomeButton';
-import { StatusBar } from 'expo-status-bar';
+import { images } from '../constants'
+import CutomeButton from '../components/CutomeButton'
 
-import { useGlobalContext } from '../context/GlobalProvider';
+import { useGlobalContext } from '../context/GlobalProvider'
 
 export default function App() {
   const { isLoggedIn, isLoading } = useGlobalContext()
+
+  if (isLoading) return <></>
 
   if (!isLoading && isLoggedIn) return <Redirect href="/home" />
 
@@ -31,8 +33,7 @@ export default function App() {
 
           <View className="relative mt-5">
             <Text className="text-3xl text-white font-bold text-center">
-              Discover Endless Possibilities with {' '}
-              <Text className="text-secondary-200">Aora</Text>
+              Discover Endless Possibilities with <Text className="text-secondary-200">Aora</Text>
             </Text>
 
             <Image
@@ -42,7 +43,8 @@ export default function App() {
             />
           </View>
           <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">
-            Where creativity meets inovation: embark on a journey of limitless exploration with Aora.
+            Where creativity meets inovation: embark on a journey of limitless exploration with
+            Aora.
           </Text>
           <CutomeButton
             title="Continue with Email"
@@ -51,7 +53,10 @@ export default function App() {
           />
         </View>
       </ScrollView>
-      <StatusBar backgroundColor='#161622' style='light' />
+      <StatusBar
+        backgroundColor="#161622"
+        style="light"
+      />
     </SafeAreaView>
   )
 }

@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image, Alert } from 'react-native'
-import { useState} from 'react'
+import { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Link, router } from 'expo-router'
 
@@ -15,10 +15,10 @@ const SignIn = () => {
     email: '',
     password: '',
   })
-  const { setUser } = useGlobalContext()
+  const { setUser, setIsLoggedIn } = useGlobalContext()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     if (!form.email || !form.password) {
       Alert.alert('Error', 'Please fill all the fields')
     }
@@ -75,7 +75,12 @@ const SignIn = () => {
 
           <View className="justify-center pt-5 flex-row gap-2">
             <Text className="text-lg text-gray-100 font-pregular">Don't have an account?</Text>
-            <Link href="/sign-up" className="text-lg font-psemibold text-secondary">Sign Up</Link>
+            <Link
+              href="/sign-up"
+              className="text-lg font-psemibold text-secondary"
+            >
+              Sign Up
+            </Link>
           </View>
         </View>
       </ScrollView>
